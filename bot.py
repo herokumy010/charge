@@ -272,7 +272,7 @@ def send_file(message):
 			mjj=binn(cc,c,re)
 			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html')
 			
-		else:
+		if:
 			els+=1
 			msg="else ✅"
 			re="else ✅"
