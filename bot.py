@@ -40,7 +40,7 @@ def  binn(bin,c,re):
 零 𝘾𝙤𝙪𝙣𝙩𝙧𝙮 -» <code>{country_name} {country_flag} {country_currencies}</code>
 
 ᥫ᭡ 𝙗𝙤𝙩 @M77SALAH"""
-token = '7161511800:AAG8qP9cybURl6XdM8Kp2fylgQlsyBw7oF0'
+token = '6445619223:AAFI8Q3zIJzjvTCQkgZBTaINJJSIKHZOlIw'
 
 
 
@@ -53,7 +53,7 @@ def start(message):
     if message.from_user.id:
         idd = message.from_user.id
         first = message.from_user.first_name
-        bot.reply_to(message,f"Hello Pro Bot\nPlease Send Cc List ✓",parse_mode="markdown")
+        bot.reply_to(message,f"Hello Pro Bot\nPlease Send Cc List ✓✓",parse_mode="markdown")
         
 
 
